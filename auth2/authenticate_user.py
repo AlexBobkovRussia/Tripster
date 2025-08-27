@@ -8,8 +8,12 @@ db = {"Alex": {"username": "Alex", "hashed_password": "$2b$12$3s5jvXf1ukpmJua2e.
                "email": "bobkovalex.yaundex.ru@yandex.ru"}}
 
 
-def verify_password(plaintext_password, hashed_password):
+def verify_password(plaintext_password: str, hashed_password: str):
     return pwd_context.verify(plaintext_password, hashed_password)
+
+
+def hash_password(password: str):
+    return pwd_context.hash(password)
 
 
 def authenticate_user(username: str, password: str):

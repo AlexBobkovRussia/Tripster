@@ -1,4 +1,7 @@
 import psycopg2
+from passlib.context import CryptContext
+
+pwd_context = CryptContext(shemes={"bcrypt"}, deprecated="auto")
 
 
 class Database:
@@ -17,18 +20,6 @@ class Database:
             port=port
         )
 
-    def create(self, table_name):
-        pass
-
-    def read(self):
-        pass
-
-    def update(self):
-        pass
-
-    def delete(self):
-        pass
-
     def __enter__(self):
         return self._conn
 
@@ -37,13 +28,3 @@ class Database:
 
     def close(self):
         self._conn.close()
-
-
-if __name__ == "__main__":
-    db = Database(
-        user="postgres",
-        password="Gq-Rpa7{jr]!@pr",
-        database="Tripster",
-        host="127.0.0.1",
-        port=5432,
-    )
